@@ -28,25 +28,36 @@ export default function About() {
       wrapper.appendChild(line)
     })
 
-    gsap.fromTo(split.lines, 
-      { yPercent: 120, opacity: 0, filter: 'blur(10px)' },
-      {
-        yPercent: 0,
-        opacity: 1,
-        filter: 'blur(0px)',
-        duration: 1.4,
-        stagger: 0.15,
-        ease: 'power4.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 85%',
-          end: 'center center',
-          toggleActions: 'play none none reverse',
+    const mm = gsap.matchMedia()
+    
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.fromTo(split.lines, 
+        { yPercent: 120, opacity: 0, filter: 'blur(10px)' },
+        {
+          yPercent: 0,
+          opacity: 1,
+          filter: 'blur(0px)',
+          duration: 1.4,
+          stagger: 0.15,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 85%',
+            end: 'center center',
+            toggleActions: 'play none none reverse',
+          }
         }
-      }
-    )
+      )
+    })
 
-    return () => split.revert()
+    mm.add('(prefers-reduced-motion: reduce)', () => {
+      gsap.set(split.lines, { yPercent: 0, opacity: 1, filter: 'none' })
+    })
+
+    return () => {
+      split.revert()
+      mm.revert()
+    }
   }, { dependencies: [isLoaded], scope: containerRef })
 
   return (

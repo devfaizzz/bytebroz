@@ -194,6 +194,8 @@ function ServiceRow({ service, index }: { service: any; index: number }) {
         <img 
           src={service.image} 
           alt={service.title}
+          loading="lazy"
+          decoding="async"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
       </div>
