@@ -1,32 +1,17 @@
 import Hero from '@/components/sections/Hero'
+import Work from '@/components/sections/Work'
+import About from '@/components/sections/About'
+import Services from '@/components/sections/Services'
+import Process from '@/components/sections/Process'
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-
-      {/* Placeholder for future sections */}
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderTop: '1px solid var(--hairline)',
-        }}
-      >
-        <p
-          style={{
-            fontFamily: 'var(--font-display), Georgia, serif',
-            fontSize: 'clamp(24px, 4vw, 48px)',
-            fontWeight: 300,
-            color: 'var(--muted)',
-            letterSpacing: '-0.02em',
-          }}
-        >
-          More sections coming soon.
-        </p>
-      </div>
+      <Work />
+      <About />
+      <Services />
+      <Process />
     </>
   )
 }
