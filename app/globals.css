@@ -155,3 +155,32 @@ a.nav-desktop-links {
     display: flex !important;
   }
 }
+
+/* ─── Breathing Animation for Hero Background ───────────────────────── */
+@keyframes breathing-gradient {
+  0% {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.05);
+  }
+  100% {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+.gradient-bg-breath {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  height: 80vh;
+  background: radial-gradient(ellipse at bottom center, rgba(255, 90, 0, 0.45) 0%, rgba(180, 50, 0, 0.15) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+  animation: breathing-gradient 8s ease-in-out infinite;
+}
+

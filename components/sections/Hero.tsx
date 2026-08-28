@@ -101,6 +101,9 @@ export default function Hero() {
         overflow: 'hidden',
       }}
     >
+      {/* ── Background gradient with breathing animation ─── */}
+      <div className="gradient-bg-breath" />
+
       {/* ── Decorative right rail ─────────────────────────────── */}
       <div
         aria-hidden="true"
