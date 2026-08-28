@@ -88,54 +88,78 @@ function ProjectItem({ project, index }: { project: any; index: number }) {
   
   const handleMouseEnter = () => {
     // Wrapper scales down slightly for an editorial inset feel
-    gsap.to(itemRef.current?.querySelector('.project-image-wrapper'), {
-      scale: 0.98,
-      duration: 0.8,
-      ease: 'power3.out'
-    })
+    const imageWrapper = itemRef.current?.querySelector('.project-image-wrapper')
+    if (imageWrapper) {
+      gsap.to(imageWrapper, {
+        scale: 0.98,
+        duration: 0.8,
+        ease: 'power3.out'
+      })
+    }
     // Image scales up subtly
-    gsap.to(itemRef.current?.querySelector('.project-image'), {
-      scale: 1.05,
-      duration: 0.8,
-      ease: 'power3.out'
-    })
+    const image = itemRef.current?.querySelector('.project-image')
+    if (image) {
+      gsap.to(image, {
+        scale: 1.05,
+        duration: 0.8,
+        ease: 'power3.out'
+      })
+    }
     // Title shifts right
-    gsap.to(itemRef.current?.querySelector('.project-title'), {
-      x: 16,
-      color: 'var(--white)',
-      duration: 0.6,
-      ease: 'power3.out'
-    })
+    const title = itemRef.current?.querySelector('.project-title')
+    if (title) {
+      gsap.to(title, {
+        x: 16,
+        color: 'var(--white)',
+        duration: 0.6,
+        ease: 'power3.out'
+      })
+    }
     // Metadata shifts left slightly
-    gsap.to(itemRef.current?.querySelector('.project-meta'), {
-      x: -8,
-      duration: 0.6,
-      ease: 'power3.out'
-    })
+    const meta = itemRef.current?.querySelector('.project-meta')
+    if (meta) {
+      gsap.to(meta, {
+        x: -8,
+        duration: 0.6,
+        ease: 'power3.out'
+      })
+    }
   }
 
   const handleMouseLeave = () => {
-    gsap.to(itemRef.current?.querySelector('.project-image-wrapper'), {
-      scale: 1,
-      duration: 0.8,
-      ease: 'power3.out'
-    })
-    gsap.to(itemRef.current?.querySelector('.project-image'), {
-      scale: 1,
-      duration: 0.8,
-      ease: 'power3.out'
-    })
-    gsap.to(itemRef.current?.querySelector('.project-title'), {
-      x: 0,
-      color: 'var(--off-white)',
-      duration: 0.6,
-      ease: 'power3.out'
-    })
-    gsap.to(itemRef.current?.querySelector('.project-meta'), {
-      x: 0,
-      duration: 0.6,
-      ease: 'power3.out'
-    })
+    const imageWrapper = itemRef.current?.querySelector('.project-image-wrapper')
+    if (imageWrapper) {
+      gsap.to(imageWrapper, {
+        scale: 1,
+        duration: 0.8,
+        ease: 'power3.out'
+      })
+    }
+    const image = itemRef.current?.querySelector('.project-image')
+    if (image) {
+      gsap.to(image, {
+        scale: 1,
+        duration: 0.8,
+        ease: 'power3.out'
+      })
+    }
+    const title = itemRef.current?.querySelector('.project-title')
+    if (title) {
+      gsap.to(title, {
+        x: 0,
+        color: 'var(--off-white)',
+        duration: 0.6,
+        ease: 'power3.out'
+      })
+    }
+    const meta = itemRef.current?.querySelector('.project-meta')
+    if (meta) {
+      gsap.to(meta, {
+        x: 0,
+        duration: 0.6,
+        ease: 'power3.out'
+      })
+    }
   }
 
   return (
