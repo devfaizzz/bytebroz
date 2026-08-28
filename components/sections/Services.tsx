@@ -85,12 +85,15 @@ function ServiceRow({ service, index }: { service: any; index: number }) {
       duration: 0.6,
       ease: 'power3.out'
     })
-    gsap.to(rowRef.current?.querySelector('.service-desc'), {
-      opacity: 0.4,
-      x: -20,
-      duration: 0.6,
-      ease: 'power3.out'
-    })
+    const desc = rowRef.current?.querySelector('.service-desc')
+    if (desc) {
+      gsap.to(desc, {
+        opacity: 0.4,
+        x: -20,
+        duration: 0.6,
+        ease: 'power3.out'
+      })
+    }
   }
 
   const handleMouseLeave = () => {
@@ -107,12 +110,15 @@ function ServiceRow({ service, index }: { service: any; index: number }) {
       duration: 0.6,
       ease: 'power3.out'
     })
-    gsap.to(rowRef.current?.querySelector('.service-desc'), {
-      opacity: 1,
-      x: 0,
-      duration: 0.6,
-      ease: 'power3.out'
-    })
+    const desc = rowRef.current?.querySelector('.service-desc')
+    if (desc) {
+      gsap.to(desc, {
+        opacity: 1,
+        x: 0,
+        duration: 0.6,
+        ease: 'power3.out'
+      })
+    }
   }
 
   // Mouse move parallax for the image reveal
