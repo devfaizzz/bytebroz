@@ -20,12 +20,13 @@ export default function Process() {
 
     steps.forEach((step) => {
       gsap.fromTo(step,
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 80, filter: 'blur(10px)' },
         {
           opacity: 1, 
           y: 0, 
-          duration: 1, 
-          ease: 'power3.out',
+          filter: 'blur(0px)',
+          duration: 1.2, 
+          ease: 'power4.out',
           scrollTrigger: {
             trigger: step,
             start: 'top 85%',

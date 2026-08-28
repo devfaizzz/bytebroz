@@ -3,6 +3,7 @@ import Work from '@/components/sections/Work'
 import About from '@/components/sections/About'
 import Services from '@/components/sections/Services'
 import Process from '@/components/sections/Process'
+import Footer from '@/components/sections/Footer'
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <About />
       <Services />
       <Process />
+      <Footer />
     </>
   )
 }

@@ -29,16 +29,17 @@ export default function About() {
     })
 
     gsap.fromTo(split.lines, 
-      { yPercent: 120, opacity: 0 },
+      { yPercent: 120, opacity: 0, filter: 'blur(10px)' },
       {
         yPercent: 0,
         opacity: 1,
-        duration: 1.2,
-        stagger: 0.1,
+        filter: 'blur(0px)',
+        duration: 1.4,
+        stagger: 0.15,
         ease: 'power4.out',
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top 80%',
+          start: 'top 85%',
           end: 'center center',
           toggleActions: 'play none none reverse',
         }

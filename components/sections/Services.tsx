@@ -33,11 +33,11 @@ export default function Services() {
 
       tl.fromTo(line, 
         { scaleX: 0 }, 
-        { scaleX: 1, duration: 1, ease: 'power3.inOut', transformOrigin: 'left' }
+        { scaleX: 1, duration: 1.2, ease: 'power4.inOut', transformOrigin: 'left' }
       ).fromTo(content,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-        '-=0.6'
+        { opacity: 0, y: 30, filter: 'blur(10px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, ease: 'power4.out' },
+        '-=0.8'
       )
     })
   }, { dependencies: [isLoaded], scope: containerRef })
