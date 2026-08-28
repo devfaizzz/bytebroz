@@ -1,26 +1,157 @@
 @import "tailwindcss";
 
+/* ─── Design Tokens ─────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --black:      #0a0a0a;
+  --white:      #f0ede8;
+  --off-white:  #c8c5c0;
+  --muted:      #6b6b6b;
+  --hairline:   rgba(240, 237, 232, 0.1);
+  --accent:     #f0ede8;
+  --nav-h:      clamp(60px, 8vw, 80px);
+
+  --font-display: var(--font-cormorant);
+  --font-body:    var(--font-inter);
 }
 
+/* ─── Tailwind v4 theme extension ───────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-black:     var(--black);
+  --color-white:     var(--white);
+  --color-off-white: var(--off-white);
+  --color-muted:     var(--muted);
+  --color-hairline:  var(--hairline);
+  --font-display:    var(--font-display);
+  --font-body:       var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Lenis smooth scroll ───────────────────────────────────────────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* ─── Base reset ────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--black);
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--black);
+  color: var(--white);
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ─── Hide native cursor on desktop only ───────────────────────────── */
+@media (pointer: fine) {
+  html, body, * {
+    cursor: none !important;
+  }
+}
+
+/* ─── Text selection ────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--muted); }
+
+/* ─── Typography utilities ──────────────────────────────────────────── */
+.font-display { font-family: var(--font-display), Georgia, serif; }
+.font-body    { font-family: var(--font-body), system-ui, sans-serif; }
+
+.label {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ─── Navbar hover states ───────────────────────────────────────────── */
+.nav-link:hover { color: var(--white) !important; }
+
+.nav-cta:hover {
+  background-color: var(--white) !important;
+  color: var(--black) !important;
+  border-color: var(--white) !important;
+}
+
+.overlay-link:hover { color: var(--off-white) !important; }
+
+/* ─── Hero grid — desktop side-by-side ─────────────────────────────── */
+
+/* Mobile: description sits below headline */
+.hero-grid {
+  grid-template-columns: 1fr !important;
+}
+.hero-desc-col {
+  /* shown below headline on mobile */
+  display: block;
+}
+
+/* Tablet and up: headline left, desc right */
+@media (min-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr auto !important;
+    align-items: flex-end !important;
+  }
+  .hero-desc-col {
+    max-width: 280px;
+    padding-bottom: 0.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-desc-col {
+    max-width: 320px;
+  }
+}
+
+/* ─── Hide/show desktop nav at breakpoints ──────────────────────────── */
+
+/* Mobile: hide desktop links + CTA */
+.nav-desktop-links,
+a.nav-desktop-links {
+  display: none !important;
+}
+
+/* Tablet+: show desktop links + CTA, hide hamburger */
+@media (min-width: 768px) {
+  .nav-desktop-links,
+  a.nav-desktop-links {
+    display: flex !important;
+  }
+  .nav-hamburger {
+    display: none !important;
+  }
+}
+
+/* ─── Availability pill — hide on very small screens ───────────────── */
+.avail-pill {
+  display: none !important;
+}
+@media (min-width: 640px) {
+  .avail-pill {
+    display: flex !important;
+  }
 }
